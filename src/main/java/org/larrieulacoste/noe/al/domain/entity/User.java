@@ -36,6 +36,10 @@ public final class User {
         this.bankAccount = Objects.requireNonNull(newBankAccount);
     }
 
+    public UserId getUserId() {
+        return userId;
+    }
+
     @Override
     public String toString() {
         return "User{" +

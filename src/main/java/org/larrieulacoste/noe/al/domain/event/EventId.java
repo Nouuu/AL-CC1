@@ -13,4 +13,6 @@ public class EventId {
     public static EventId create() {
         return new EventId(UUID.randomUUID().toString());
     }
+
+
 }
