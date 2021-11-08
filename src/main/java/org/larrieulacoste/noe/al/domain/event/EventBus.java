@@ -1,4 +1,4 @@
-package org.larrieulacoste.noe.al.domain.events;
+package org.larrieulacoste.noe.al.domain.event;
 
 import java.util.List;
 

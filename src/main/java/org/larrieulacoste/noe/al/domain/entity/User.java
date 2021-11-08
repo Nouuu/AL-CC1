@@ -24,10 +24,6 @@ public final class User {
         return new User(userId, lastname, firstname, email, password, bankAccount);
     }
 
-    static User of(String lastname, String firstname, String email, String password, String bankAccount) {
-        return new User(UserId.create(), lastname, firstname, email, password, bankAccount);
-    }
-
     void changeEmail(String newEmail) {
         this.email = Objects.requireNonNull(newEmail);
     }
