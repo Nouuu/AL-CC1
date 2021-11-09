@@ -20,7 +20,7 @@ public final class User {
         this.bankAccount = Objects.requireNonNull(bankAccount);
     }
 
-    static User of(UserId userId, String lastname, String firstname, String email, String password, String bankAccount) {
+    public static User of(UserId userId, String lastname, String firstname, String email, String password, String bankAccount) {
         return new User(userId, lastname, firstname, email, password, bankAccount);
     }
 

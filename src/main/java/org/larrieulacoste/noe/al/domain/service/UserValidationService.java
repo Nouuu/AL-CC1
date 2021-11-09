@@ -6,14 +6,16 @@ import org.larrieulacoste.noe.al.domain.entity.User;
 
 import java.util.Objects;
 
-public class PaymentService {
+public class UserValidationService {
     private final Logger logger;
 
-    public PaymentService(LoggerFactory loggerFactory) {
+    public UserValidationService(LoggerFactory loggerFactory) {
         this.logger = Objects.requireNonNull(loggerFactory).getLogger(this);
     }
 
-    public void processPayment(User user) {
-        logger.log("Process user payment of : " + user);
+    public Boolean isUserValid(User user) {
+        logger.log("Trigerred validation with user : " + user);
+        // TODO fill this method correctly
+        return true;
     }
 }
