@@ -36,6 +36,10 @@ public final class User {
         this.bankAccount = Objects.requireNonNull(newBankAccount);
     }
 
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
     public UserId getUserId() {
         return userId;
     }
