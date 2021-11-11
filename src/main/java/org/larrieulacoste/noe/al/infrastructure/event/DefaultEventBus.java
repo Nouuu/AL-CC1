@@ -6,17 +6,15 @@ import org.larrieulacoste.noe.al.domain.event.Event;
 import org.larrieulacoste.noe.al.domain.event.EventBus;
 import org.larrieulacoste.noe.al.domain.event.Subscriber;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class DefaultEventBus<E extends Event> implements EventBus<E> {
 
     private final Map<Class<E>, List<Subscriber<E>>> subscribers;
     private final Logger logger;
 
-    public DefaultEventBus(Map<Class<E>, List<Subscriber<E>>> subscribers, LoggerFactory loggerFactory) {
-        this.subscribers = Objects.requireNonNull(subscribers);
+    public DefaultEventBus(LoggerFactory loggerFactory) {
+        this.subscribers = new HashMap<>();
         this.logger = Objects.requireNonNull(loggerFactory).getLogger(this);
     }
 
@@ -31,7 +29,14 @@ public class DefaultEventBus<E extends Event> implements EventBus<E> {
     }
 
     @Override
-    public void registerSubscriber(Class<E> classE, List<Subscriber<E>> givenSubscribers) {
-        subscribers.putIfAbsent(classE, givenSubscribers);
+    public void registerSubscriber(Class<E> eventClass, Subscriber<E> givenSubscriber) {
+        if (subscribers.containsKey(eventClass)) {
+            List<Subscriber<E>> eventSubscribers = subscribers.get(eventClass);
+            if (!eventSubscribers.contains(givenSubscriber)) {
+                eventSubscribers.add(givenSubscriber);
+            }
+        } else {
+            subscribers.put(eventClass, new ArrayList<>(List.of(givenSubscriber)));
+        }
     }
 }

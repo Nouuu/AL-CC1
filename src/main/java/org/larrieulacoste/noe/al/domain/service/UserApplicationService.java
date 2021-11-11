@@ -5,7 +5,7 @@ import org.larrieulacoste.noe.al.domain.LoggerFactory;
 import org.larrieulacoste.noe.al.domain.entity.User;
 import org.larrieulacoste.noe.al.domain.event.Event;
 import org.larrieulacoste.noe.al.domain.event.EventBus;
-import org.larrieulacoste.noe.al.domain.event.UserApplicationEvent;
+import org.larrieulacoste.noe.al.domain.event.user.UserApplicationEvent;
 import org.larrieulacoste.noe.al.domain.exception.UserInvalidException;
 import org.larrieulacoste.noe.al.domain.repository.UserRepository;
 
@@ -27,7 +27,7 @@ public final class UserApplicationService {
 
     public void applyForMembership(User user) throws UserInvalidException {
         logger.log("Apply for Membership : " + user);
-        if (userValidationService.isUserValid(user)) {
+        if (Boolean.TRUE.equals(userValidationService.isUserValid(user))) {
             eventBus.send(UserApplicationEvent.withUser(user));
         } else {
             throw new UserInvalidException("Invalid user : " + user);

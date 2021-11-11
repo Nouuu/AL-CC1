@@ -1,6 +1,8 @@
-package org.larrieulacoste.noe.al.domain.event;
+package org.larrieulacoste.noe.al.domain.event.user;
 
 import org.larrieulacoste.noe.al.domain.entity.User;
+import org.larrieulacoste.noe.al.domain.event.Event;
+import org.larrieulacoste.noe.al.domain.event.EventId;
 
 import java.time.ZonedDateTime;
 

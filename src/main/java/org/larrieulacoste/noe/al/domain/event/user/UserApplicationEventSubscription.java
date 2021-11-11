@@ -1,5 +1,6 @@
-package org.larrieulacoste.noe.al.domain.event;
+package org.larrieulacoste.noe.al.domain.event.user;
 
+import org.larrieulacoste.noe.al.domain.event.Subscriber;
 import org.larrieulacoste.noe.al.domain.service.PaymentService;
 
 public class UserApplicationEventSubscription implements Subscriber<UserApplicationEvent> {
