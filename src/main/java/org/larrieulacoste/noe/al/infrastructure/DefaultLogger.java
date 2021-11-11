@@ -14,11 +14,15 @@ public class DefaultLogger implements Logger {
 
     @Override
     public void log(String message) {
-        logger.log(Level.INFO, message);
+        if (logger.isLoggable(Level.INFO)) {
+            logger.log(Level.INFO, String.format(" %s%n%s%n", logger.getName(), message));
+        }
     }
 
     @Override
     public void error(String message) {
-        logger.log(Level.WARNING, message);
+        if (logger.isLoggable(Level.SEVERE)) {
+            logger.log(Level.SEVERE, String.format(" %s%n%s%n", logger.getName(), message));
+        }
     }
 }
