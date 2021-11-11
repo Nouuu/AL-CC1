@@ -5,7 +5,7 @@ import org.larrieulacoste.noe.al.domain.LoggerFactory;
 import org.larrieulacoste.noe.al.domain.entity.User;
 import org.larrieulacoste.noe.al.domain.event.Event;
 import org.larrieulacoste.noe.al.domain.event.EventBus;
-import org.larrieulacoste.noe.al.domain.event.user.UserApplicationEvent;
+import org.larrieulacoste.noe.al.domain.event.UserApplicationEvent;
 import org.larrieulacoste.noe.al.domain.exception.UserInvalidException;
 import org.larrieulacoste.noe.al.domain.repository.UserRepository;
 

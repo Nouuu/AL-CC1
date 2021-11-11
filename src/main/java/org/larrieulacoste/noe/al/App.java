@@ -2,8 +2,7 @@ package org.larrieulacoste.noe.al;
 
 
 import org.larrieulacoste.noe.al.domain.entity.User;
-import org.larrieulacoste.noe.al.domain.event.user.UserApplicationEvent;
-import org.larrieulacoste.noe.al.domain.event.user.UserApplicationEventSubscription;
+import org.larrieulacoste.noe.al.domain.event.UserApplicationEvent;
 import org.larrieulacoste.noe.al.domain.service.PaymentService;
 import org.larrieulacoste.noe.al.domain.service.UserApplicationService;
 import org.larrieulacoste.noe.al.domain.service.UserValidationService;
@@ -22,8 +21,7 @@ public class App {
         var userApplicationService = new UserApplicationService(eventBus, loggerFactory, userRepository, userValidationService);
         var paymentService = new PaymentService(loggerFactory);
 
-        var userApplicationEventSubscription = new UserApplicationEventSubscription(paymentService);
-        eventBus.registerSubscriber(UserApplicationEvent.class, userApplicationEventSubscription);
+        eventBus.registerSubscriber(UserApplicationEvent.class, paymentService);
 
         var user = User.of(userRepository.nextId(), "larrieu", "noé", "noe@mail.com", "changeme", "111-332");
         userApplicationService.applyForMembership(user);
