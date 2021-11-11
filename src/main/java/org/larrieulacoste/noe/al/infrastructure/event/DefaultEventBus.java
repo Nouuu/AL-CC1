@@ -1,7 +1,7 @@
 package org.larrieulacoste.noe.al.infrastructure.event;
 
-import org.larrieulacoste.noe.al.domain.Logger;
-import org.larrieulacoste.noe.al.domain.LoggerFactory;
+import org.larrieulacoste.noe.al.domain.logger.Logger;
+import org.larrieulacoste.noe.al.domain.logger.LoggerFactory;
 import org.larrieulacoste.noe.al.domain.event.Event;
 import org.larrieulacoste.noe.al.domain.event.EventBus;
 import org.larrieulacoste.noe.al.domain.event.Subscriber;

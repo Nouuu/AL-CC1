@@ -1,4 +1,4 @@
-package org.larrieulacoste.noe.al.domain;
+package org.larrieulacoste.noe.al.domain.logger;
 
 public interface Logger {
 

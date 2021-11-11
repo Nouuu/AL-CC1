@@ -1,7 +1,7 @@
-package org.larrieulacoste.noe.al.infrastructure;
+package org.larrieulacoste.noe.al.infrastructure.logger;
 
-import org.larrieulacoste.noe.al.domain.Logger;
-import org.larrieulacoste.noe.al.domain.LoggerFactory;
+import org.larrieulacoste.noe.al.domain.logger.Logger;
+import org.larrieulacoste.noe.al.domain.logger.LoggerFactory;
 
 import java.util.Objects;
 

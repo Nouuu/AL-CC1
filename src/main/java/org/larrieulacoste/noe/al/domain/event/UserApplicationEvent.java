@@ -33,4 +33,13 @@ public class UserApplicationEvent implements Event {
     public User getUser() {
         return user;
     }
+
+    @Override
+    public String toString() {
+        return "UserApplicationEvent{" +
+                "eventId=" + eventId +
+                ", occurredDate=" + occurredDate +
+                ", user=" + user +
+                '}';
+    }
 }

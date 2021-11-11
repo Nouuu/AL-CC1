@@ -1,8 +1,9 @@
 package org.larrieulacoste.noe.al.domain.service;
 
-import org.larrieulacoste.noe.al.domain.Logger;
-import org.larrieulacoste.noe.al.domain.LoggerFactory;
+import org.apache.commons.lang3.StringUtils;
 import org.larrieulacoste.noe.al.domain.entity.User;
+import org.larrieulacoste.noe.al.domain.logger.Logger;
+import org.larrieulacoste.noe.al.domain.logger.LoggerFactory;
 
 import java.util.Objects;
 
@@ -14,8 +15,13 @@ public class UserValidationService {
     }
 
     public Boolean isUserValid(User user) {
-        logger.log("Trigerred validation with user : " + user);
-        // TODO fill this method correctly
-        return true;
+        logger.log("Triggered validation with user : " + user);
+        return user != null &&
+                StringUtils.isNotBlank(user.getFirstname()) &&
+                StringUtils.isNotBlank(user.getLastname()) &&
+                StringUtils.isNotBlank(user.getPassword()) &&
+                user.getPassword().length() > 8 &&
+                StringUtils.isNotBlank(user.getEmail()) &&
+                user.getBankAccount().matches("^\\d{4}-\\d{4}-\\d{4}$");
     }
 }

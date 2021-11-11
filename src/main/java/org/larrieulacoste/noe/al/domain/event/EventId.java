@@ -14,5 +14,10 @@ public class EventId {
         return new EventId(UUID.randomUUID().toString());
     }
 
-
+    @Override
+    public String toString() {
+        return "EventId{" +
+                "value='" + value + '\'' +
+                '}';
+    }
 }
