@@ -26,11 +26,13 @@ public final class UserApplicationService {
 
     public void applyForMembership(User user) throws UserInvalidException {
         logger.log("Apply for Membership : " + user);
+
         if (Boolean.TRUE.equals(userValidationService.isUserValid(user))) {
             eventBus.send(UserApplicationEvent.withUser(user));
         } else {
             throw new UserInvalidException("Invalid user : " + user);
         }
+
         userRepository.save(user);
     }
 }

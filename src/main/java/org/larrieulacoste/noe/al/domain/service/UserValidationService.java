@@ -16,6 +16,7 @@ public class UserValidationService {
 
     public Boolean isUserValid(User user) {
         logger.log("Triggered validation with user : " + user);
+
         return user != null &&
                 StringUtils.isNotBlank(user.getFirstname()) &&
                 StringUtils.isNotBlank(user.getLastname()) &&

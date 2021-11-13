@@ -23,17 +23,21 @@ public class DefaultEventBus<E extends Event<?>> implements EventBus<E> {
     @Override
     public void send(E event) {
         logger.log("New event sent : " + event);
+
+        if (event == null) {
+            throw new NullPointerException("Event is null !");
+        }
         if (subscribers.isEmpty()) {
             throw new IllegalStateException("No subscriber for " + event.getClass().getSimpleName());
         }
+
         subscribers.forEach(subscriber -> subscriber.accept(event));
     }
 
     @Override
     public void registerSubscriber(Subscriber<E> givenSubscriber) {
-        if (!subscribers.contains(givenSubscriber)) {
+        if (givenSubscriber != null && !subscribers.contains(givenSubscriber)) {
             subscribers.add(givenSubscriber);
         }
-
     }
 }

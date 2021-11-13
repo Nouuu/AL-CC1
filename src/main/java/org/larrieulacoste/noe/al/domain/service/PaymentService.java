@@ -16,12 +16,17 @@ public class PaymentService implements Subscriber<UserApplicationEvent> {
 
     public PaymentService(LoggerFactory loggerFactory, PaymentAPI paymentAPI) {
         this.logger = Objects.requireNonNull(loggerFactory).getLogger(this);
-        this.paymentAPI = paymentAPI;
+        this.paymentAPI = Objects.requireNonNull(paymentAPI);
     }
 
     public void processPayment(User user, Double amount) throws PaymentException {
         logger.log("Process user payment of : " + user);
-        Boolean result = paymentAPI.pay(Objects.requireNonNull(user).getBankAccount(), amount);
+
+        Boolean result = paymentAPI.pay(
+                Objects.requireNonNull(user).getBankAccount(),
+                Objects.requireNonNull(amount)
+        );
+
         if (!Boolean.TRUE.equals(result)) {
             throw new PaymentException("Payment error for user : " + user);
         }
@@ -29,7 +34,7 @@ public class PaymentService implements Subscriber<UserApplicationEvent> {
 
     @Override
     public void accept(UserApplicationEvent userApplicationEvent) {
-        this.processPayment(userApplicationEvent.getItem(), 0.);
+        this.processPayment(userApplicationEvent.getItem(), 0.); // Didn't know where I could put the amount yet
     }
 
 }

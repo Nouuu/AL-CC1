@@ -7,7 +7,7 @@ public class UserId {
     private final String value;
 
     private UserId(String value) {
-        this.value = value;
+        this.value = Objects.requireNonNull(value);
     }
 
     public String getValue() {
@@ -19,7 +19,7 @@ public class UserId {
     }
 
     public static UserId of(String value) {
-        return new UserId(Objects.requireNonNull(value));
+        return new UserId(value);
     }
 
     @Override

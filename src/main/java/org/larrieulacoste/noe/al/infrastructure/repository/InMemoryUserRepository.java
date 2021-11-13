@@ -24,12 +24,14 @@ public class InMemoryUserRepository implements UserRepository {
     @Override
     public void save(User user) {
         logger.log("Saving user in memory repository : " + user);
+
         data.put(Objects.requireNonNull(user).getUserId(), user);
     }
 
     @Override
     public User byId(UserId userId) throws UserNotFoundException {
         logger.log("Retrieving user by ID from memory repository : " + userId);
+
         final User user = data.get(Objects.requireNonNull(userId));
         if (user == null) {
             throw new UserNotFoundException("No user for " + userId.getValue());
