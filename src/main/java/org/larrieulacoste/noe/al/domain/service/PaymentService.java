@@ -1,12 +1,12 @@
 package org.larrieulacoste.noe.al.domain.service;
 
 import org.larrieulacoste.noe.al.domain.api.PaymentAPI;
-import org.larrieulacoste.noe.al.domain.logger.Logger;
-import org.larrieulacoste.noe.al.domain.logger.LoggerFactory;
 import org.larrieulacoste.noe.al.domain.entity.User;
 import org.larrieulacoste.noe.al.domain.event.Subscriber;
 import org.larrieulacoste.noe.al.domain.event.UserApplicationEvent;
 import org.larrieulacoste.noe.al.domain.exception.PaymentException;
+import org.larrieulacoste.noe.al.domain.logger.Logger;
+import org.larrieulacoste.noe.al.domain.logger.LoggerFactory;
 
 import java.util.Objects;
 
@@ -29,7 +29,7 @@ public class PaymentService implements Subscriber<UserApplicationEvent> {
 
     @Override
     public void accept(UserApplicationEvent userApplicationEvent) {
-        this.processPayment(userApplicationEvent.getUser(), 0.);
+        this.processPayment(userApplicationEvent.getItem(), 0.);
     }
 
 }

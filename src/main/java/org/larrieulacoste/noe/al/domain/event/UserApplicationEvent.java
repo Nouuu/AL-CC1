@@ -4,7 +4,7 @@ import org.larrieulacoste.noe.al.domain.entity.User;
 
 import java.time.ZonedDateTime;
 
-public class UserApplicationEvent implements Event {
+public class UserApplicationEvent implements Event<User> {
 
     private final EventId eventId;
     private final ZonedDateTime occurredDate;
@@ -30,7 +30,8 @@ public class UserApplicationEvent implements Event {
         return occurredDate;
     }
 
-    public User getUser() {
+    @Override
+    public User getItem() {
         return user;
     }
 

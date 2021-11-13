@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class DefaultEventBus<E extends Event> implements EventBus<E> {
+public class DefaultEventBus<E extends Event<?>> implements EventBus<E> {
 
     private final List<Subscriber<E>> subscribers;
     private final Logger logger;
