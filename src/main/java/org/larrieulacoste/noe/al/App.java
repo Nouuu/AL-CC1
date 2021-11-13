@@ -16,14 +16,14 @@ public class App {
         var loggerFactory = new DefaultLoggerFactory();
 
         var userRepository = new InMemoryUserRepository(loggerFactory);
-        var eventBus = new DefaultEventBus(loggerFactory);
+        var userApplicationEventBus = new DefaultEventBus<UserApplicationEvent>(loggerFactory);
         var paymentAPI = new StubPaymentApi();
 
         var userValidationService = new UserValidationService(loggerFactory);
-        var userApplicationService = new UserApplicationService(eventBus, loggerFactory, userRepository, userValidationService);
+        var userApplicationService = new UserApplicationService(userApplicationEventBus, loggerFactory, userRepository, userValidationService);
         var paymentService = new PaymentService(loggerFactory, paymentAPI);
 
-        eventBus.registerSubscriber(UserApplicationEvent.class, paymentService);
+        userApplicationEventBus.registerSubscriber(paymentService);
 
         var user = User.of(userRepository.nextId(), "larrieu", "noé", "noe@mail.com", "changeme123", "1111-3323-5555");
         userApplicationService.applyForMembership(user);

@@ -13,12 +13,12 @@ import java.util.Objects;
 
 
 public final class UserApplicationService {
-    private final EventBus<Event> eventBus;
+    private final EventBus<UserApplicationEvent> eventBus;
     private final Logger logger;
     private final UserRepository userRepository;
     private final UserValidationService userValidationService;
 
-    public UserApplicationService(EventBus<Event> eventBus, LoggerFactory loggerFactory, UserRepository userRepository, UserValidationService userValidationService) {
+    public UserApplicationService(EventBus<UserApplicationEvent> eventBus, LoggerFactory loggerFactory, UserRepository userRepository, UserValidationService userValidationService) {
         this.eventBus = Objects.requireNonNull(eventBus);
         this.logger = Objects.requireNonNull(loggerFactory).getLogger(this);
         this.userRepository = Objects.requireNonNull(userRepository);
