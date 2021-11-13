@@ -10,16 +10,16 @@ public class UserId {
         this.value = Objects.requireNonNull(value);
     }
 
-    public String getValue() {
-        return value;
-    }
-
     public static UserId fromUUID(UUID uuid) {
         return new UserId(uuid.toString());
     }
 
     public static UserId of(String value) {
         return new UserId(value);
+    }
+
+    public String getValue() {
+        return value;
     }
 
     @Override

@@ -9,8 +9,8 @@ import org.larrieulacoste.noe.al.domain.repository.UserRepository;
 import java.util.Objects;
 
 public class JdbcUserRepository implements UserRepository {
-    private final Logger logger;
     private static final String NOT_YET_IMPLEMENTED_MESSAGE = "Not yet implemented";
+    private final Logger logger;
 
     public JdbcUserRepository(LoggerFactory loggerFactory) {
         this.logger = Objects.requireNonNull(loggerFactory).getLogger(this);

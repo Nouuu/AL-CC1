@@ -1,10 +1,10 @@
 package org.larrieulacoste.noe.al.infrastructure.repository;
 
-import org.larrieulacoste.noe.al.domain.logger.Logger;
-import org.larrieulacoste.noe.al.domain.logger.LoggerFactory;
 import org.larrieulacoste.noe.al.domain.entity.User;
 import org.larrieulacoste.noe.al.domain.entity.UserId;
 import org.larrieulacoste.noe.al.domain.exception.UserNotFoundException;
+import org.larrieulacoste.noe.al.domain.logger.Logger;
+import org.larrieulacoste.noe.al.domain.logger.LoggerFactory;
 import org.larrieulacoste.noe.al.domain.repository.UserRepository;
 
 import java.util.Map;
