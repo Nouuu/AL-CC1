@@ -3,30 +3,37 @@
 
 # Architecture choisie
 
-## Domaine
+## Domain-Driven Design
+
+Cette application a été conçu en utilisant une approche DDD (Domain-Driven Design). Cela fit référence à une conception piloté par le métier. De cette manière, l'application est séparée en 2 package principaux :
+
+- **Domain :** Contient l'ensemble des informations relatives au métier.
+- **Infrastructure :** Contient les implémentations des différentes interfaces, se comporte comme une bibliothèque de support au domaine
+
+## Implémentation
 
 ### API
 
+strategy
+
 ### Entités
 
-Value object design
+Value object design + entity
 
 ### Événements
+
+Observable, event
 
 ### Exception
 
 ### Logger
 
+factory, strategy
+
 ### Repositories
+
+pattern repository, strategy
 
 ### Services
 
-## Infrastructure
-
-### API
-
-### Événements
-
-### Logger
-
-### Repositories
+interfaces, polymorphisme, DI
