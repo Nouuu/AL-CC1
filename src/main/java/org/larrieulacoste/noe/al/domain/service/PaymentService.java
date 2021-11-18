@@ -22,12 +22,12 @@ public class PaymentService implements Subscriber<UserApplicationEvent> {
     public void processPayment(User user, Double amount) throws PaymentException {
         logger.log(String.format("Process user payment of : %s with amount %.2f", user, amount));
 
-        Boolean result = paymentAPI.pay(
+        Boolean paymentSuccess = paymentAPI.pay(
                 Objects.requireNonNull(user).getBankAccount(),
                 Double.max(Objects.requireNonNull(amount), 0)
         );
 
-        if (Boolean.TRUE.equals(result)) {
+        if (Boolean.TRUE.equals(paymentSuccess)) {
             logger.log("Payment success !");
         } else {
             throw new PaymentException("Payment error for user : " + user);
