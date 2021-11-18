@@ -24,15 +24,14 @@ public final class UserApplicationService {
         this.userValidationService = Objects.requireNonNull(userValidationService);
     }
 
-    public void applyForMembership(User user) throws UserInvalidException {
+    public void applyForMembership(User user, Double amount) throws UserInvalidException {
         logger.log("Apply for Membership : " + user);
 
         if (Boolean.TRUE.equals(userValidationService.isUserValid(user))) {
-            eventBus.send(UserApplicationEvent.withUser(user));
+            userRepository.save(user);
+            eventBus.send(UserApplicationEvent.withUserAndAmount(user, amount));
         } else {
             throw new UserInvalidException("Invalid user : " + user);
         }
-
-        userRepository.save(user);
     }
 }

@@ -20,21 +20,26 @@ public class PaymentService implements Subscriber<UserApplicationEvent> {
     }
 
     public void processPayment(User user, Double amount) throws PaymentException {
-        logger.log("Process user payment of : " + user);
+        logger.log(String.format("Process user payment of : %s with amount %.2f", user, amount));
 
         Boolean result = paymentAPI.pay(
                 Objects.requireNonNull(user).getBankAccount(),
-                Objects.requireNonNull(amount)
+                Double.max(Objects.requireNonNull(amount), 0)
         );
 
-        if (!Boolean.TRUE.equals(result)) {
+        if (Boolean.TRUE.equals(result)) {
+            logger.log("Payment success !");
+        } else {
             throw new PaymentException("Payment error for user : " + user);
         }
     }
 
     @Override
     public void accept(UserApplicationEvent userApplicationEvent) {
-        this.processPayment(userApplicationEvent.getItem(), 0.); // Didn't know where I could put the amount yet
+        this.processPayment(
+                userApplicationEvent.getItem(),
+                userApplicationEvent.getAmount()
+        );
     }
 
 }

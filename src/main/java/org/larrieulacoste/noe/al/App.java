@@ -26,7 +26,7 @@ public class App {
         userApplicationEventBus.registerSubscriber(paymentService);
 
         var user = User.of(userRepository.nextId(), "larrieu", "noé", "noe@mail.com", "changeme123", "1111-3323-5555");
-        userApplicationService.applyForMembership(user);
+        userApplicationService.applyForMembership(user, -1.);
 
         System.out.println(userRepository.byId(user.getUserId()));
         // userRepository.byId(UserId.of("unknown id")); // Throws user not found exception

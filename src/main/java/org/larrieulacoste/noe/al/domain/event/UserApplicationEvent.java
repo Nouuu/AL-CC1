@@ -10,15 +10,17 @@ public class UserApplicationEvent implements Event<User> {
     private final EventId eventId;
     private final ZonedDateTime occurredDate;
     private final User user;
+    private final Double amount;
 
-    private UserApplicationEvent(EventId eventId, ZonedDateTime occurredDate, User user) {
+    private UserApplicationEvent(EventId eventId, ZonedDateTime occurredDate, User user, Double amount) {
         this.eventId = Objects.requireNonNull(eventId);
         this.occurredDate = Objects.requireNonNull(occurredDate);
         this.user = Objects.requireNonNull(user);
+        this.amount = amount;
     }
 
-    public static UserApplicationEvent withUser(User user) {
-        return new UserApplicationEvent(EventId.create(), ZonedDateTime.now(), user);
+    public static UserApplicationEvent withUserAndAmount(User user, Double amount) {
+        return new UserApplicationEvent(EventId.create(), ZonedDateTime.now(), user, amount);
     }
 
     @Override
@@ -34,6 +36,10 @@ public class UserApplicationEvent implements Event<User> {
     @Override
     public User getItem() {
         return user;
+    }
+
+    public Double getAmount() {
+        return amount;
     }
 
     @Override
