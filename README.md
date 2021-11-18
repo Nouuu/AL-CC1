@@ -14,11 +14,17 @@ Cette application a été conçu en utilisant une approche DDD (Domain-Driven De
 
 ### API
 
-strategy
+Ce package est utilisé pour pouvoir avoir recours à des services externes en utilisant le **pattern strategy**.
+
+L'interface est présente dans le package **domaine** et son implémentation dans **l'infrastructure**.
+
+Pour le moment, une seule API est présente, celle du **paiement** qui renvoie un Booléen pour indiquer si la transaction s'est bien éffectué. elle est actuellement implémentée par un **stub** qui revoie toujours **vrai**
 
 ### Entités
 
-Value object design + entity
+Ce package contient toute les entités utilisées dans l'application, elles suivent le **pattern value object** ainsi qu'**entity**. L'objet est donc immutable et possède un identifiant pour son utilisation à travers un repository.
+
+La seule classe présente est celle de l'utilisateur **User** ainsi que celle de son identifiant unique **UserId**.
 
 ### Événements
 
@@ -26,14 +32,18 @@ Observable, event
 
 ### Exception
 
+Contient pour le moment des exceptions d'éxecution du domaine métiers tel que **PaymentException** si le paiement a échoué, **UserInvalidException** si l'utilisateur n'est pas valide et **UserNotFoundException** si l'utilisateur n'est pas présent dans le repository implémenté.
+
 ### Logger
 
-factory, strategy
+En utilisant le **pattern strategy** ainsi que **factory**, ce package permet à une classe d'obtenir un logger qui lui est propre grace au **LoggerFactory**. Les interfaces font parties du **domaine** et leurs implémentation de **l'infrastructure**. Actuellement l'implémentation présente réutilise le la classe **Logger** **de Java**.
 
 ### Repositories
 
-pattern repository, strategy
+Ce package permet d'avoirune persistance des données entités de l'application. Pour cela on utilise le pattern repository et strategy afin de séparer son interface, qui restera dans le domaine, de son implémentation dans l'infrastructure. Actuellement l'implémentation stock les entités en mémoire et se vide quand l'application s'arrête. 
 
 ### Services
+
+Les services contiennent 
 
 interfaces, polymorphisme, DI
