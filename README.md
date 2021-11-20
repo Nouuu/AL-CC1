@@ -1,5 +1,5 @@
-| [![wakatime](https://wakatime.com/badge/user/3106fbc8-c1fe-4d47-b9ce-b0514ce3fb3d/project/19997bda-72d3-4311-b5b1-f9552652206a.svg)](https://wakatime.com/badge/user/3106fbc8-c1fe-4d47-b9ce-b0514ce3fb3d/project/19997bda-72d3-4311-b5b1-f9552652206a) |
-| ------------------------------------------------------------ |
+| [![github](https://img.shields.io/badge/repository-github-blue)](https://github.com/Nouuu/AL-CC1) | ![license](https://img.shields.io/github/license/Nouuu/AL-CC1) | [![wakatime](https://wakatime.com/badge/user/3106fbc8-c1fe-4d47-b9ce-b0514ce3fb3d/project/19997bda-72d3-4311-b5b1-f9552652206a.svg)](https://wakatime.com/badge/user/3106fbc8-c1fe-4d47-b9ce-b0514ce3fb3d/project/19997bda-72d3-4311-b5b1-f9552652206a) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 
 # Architecture choisie
 
@@ -28,7 +28,9 @@ La seule classe présente est celle de l'utilisateur **User** ainsi que celle de
 
 ### Événements
 
-Observable, event
+Afin de pouvoir prendre en compte **différents traitements** lors de l'enregistrement d'un utilisateur, sans avoir à modifier le service et que ce dernier n'ai qu'**une seule responsabilité**, ce dernier utilisera le **pattern event, observable** afin de lancer un événement lors de l'enregistrement de l'utilisateur. 
+
+Les différentes tâches à éxécuter suite à cet enregistrement n'auront alors qu'à **s'inscrire à cet événement** pour lancer leur propre traitement.
 
 ### Exception
 
@@ -40,10 +42,20 @@ En utilisant le **pattern strategy** ainsi que **factory**, ce package permet à
 
 ### Repositories
 
-Ce package permet d'avoirune persistance des données entités de l'application. Pour cela on utilise le pattern repository et strategy afin de séparer son interface, qui restera dans le domaine, de son implémentation dans l'infrastructure. Actuellement l'implémentation stock les entités en mémoire et se vide quand l'application s'arrête. 
+Ce package permet d'avoir une **persistance des données** entités de l'application. 
+
+Pour cela on utilise le **pattern repository et strategy** afin de **séparer son interface**, qui restera dans le **domaine**, de son implémentation dans **l'infrastructure**. 
+
+Actuellement l'implémentation stock les entités en mémoire et se vide quand l'application s'arrête. 
 
 ### Services
 
-Les services contiennent 
+Les services contiennent le **traitement dit métier** de notre application. Ce sont eux qui vont utiliser les différentes resourcess de notre application pour **éxécuter les traitements de leurs propres domaines**. 
 
-interfaces, polymorphisme, DI
+Notre application contient pour le moment **3 services** :
+
+- **PaymentService** : Pour les traitements relatifs aux paiements.
+- **UserApplicationService** : Pour les traitements relatifs aux enregistrements des utilisateurs
+- **UserValidationService** : Pour les traitments servant à valider un utilisateur.
+
+Les services se basent principalement sur les **interfaces** de nos autres classes afin de ne pas être dépendants d'une implémentation en particulier. On peut faire ça grâce au **polymorphisme**, la **programmation par interfaces** et le **pattern dependency injection**.
