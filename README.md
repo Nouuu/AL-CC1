@@ -3,6 +3,8 @@
 
 # Architecture choisie
 
+
+
 ## Domain-Driven Design
 
 Cette application a été conçu en utilisant une approche DDD (Domain-Driven Design). Cela fit référence à une conception piloté par le métier. De cette manière, l'application est séparée en 2 package principaux :
